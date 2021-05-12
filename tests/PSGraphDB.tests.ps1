@@ -16,4 +16,24 @@ Describe "Prerequisites" {
         }
     }
 }
+
+Describe "Graph Classes" {
+    Context "GraphNode" {
+        It "GraphNode should be a type." {
+            [GraphNode] | Should Not Be $null
+        }
+    }
+    Context "GraphRelation" {
+        It "GraphRelation should be a type." {
+            [GraphRelation] | Should Not Be $null
+        }
+    }
+
+    Context "GraphDatabase" {
+        It "GraphDatabase should be a type." {
+            [GraphDatabase] | Should Not Be $null
+        }
+    }
+
+}
 #endregion tests
