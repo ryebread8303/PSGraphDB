@@ -1,21 +1,21 @@
 public class GraphNode {
-    public Int ID;
-    public Hashtable Properties;
-    public String[] Lables;
+    public int ID;
+    public Dictionary<string> Properties;
+    public string[] Lables;
     public GraphRelation NextRelationship;
-    public void GraphNode (Int Sequence, String[] Types, Hashtable Data) {
+    public void GraphNode (int Sequence, string[] Types, Dictionary<string> Data) {
         ID = Sequence;
         Lables = Types;
         Properties = Data;
     }
 }
 public class GraphDatabase {
-    public Int CurrentID;
+    public int CurrentID;
     public GraphNode[] NodeTable;
     public GraphRelation[] RelationTable;
 }
 
 public class GraphProperty {
-    public String Key;
-    public String Value;
+    public string Key;
+    public string Value;
 }
