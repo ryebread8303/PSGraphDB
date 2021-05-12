@@ -3,6 +3,7 @@ $here = $PSScriptRoot
 $parent = Split-Path $here -Parent
 $manifest = Import-PowerShellDataFile (join-path $parent "PSGraphDB.psd1")
 $modulefiles = $manifest.FileList
+import-module (join-path $parent "PSGraphDB.psd1")
 #endregion setup
 
 
