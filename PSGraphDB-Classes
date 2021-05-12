@@ -1,9 +1,11 @@
+using System;
+using System.Collections.Generic;
 public class GraphNode {
     public int ID;
-    public Dictionary<string> Properties;
+    public Dictionary<string,string> Properties;
     public string[] Lables;
     public GraphRelation NextRelationship;
-    public void GraphNode (int Sequence, string[] Types, Dictionary<string> Data) {
+    public GraphNode (int Sequence, string[] Types, Dictionary<string,string> Data) {
         ID = Sequence;
         Lables = Types;
         Properties = Data;
@@ -18,4 +20,15 @@ public class GraphDatabase {
 public class GraphProperty {
     public string Key;
     public string Value;
+}
+
+public class GraphRelation {
+    public int ID;
+    public Dictionary<string,string> Properties;
+    public GraphNode LeftNode;
+    public GraphNode RightNode;
+    public string RelationshipType;
+    public GraphRelation PreviousRelation;
+    public GraphRelation NextRelation;
+    public bool FirstInChain;
 }
