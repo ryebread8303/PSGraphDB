@@ -35,4 +35,9 @@ public class GraphRelation {
     public GraphRelation PreviousRelation;
     public GraphRelation NextRelation;
     public bool FirstInChain;
+    public GraphRelation (int Sequence, GraphNode FirstNode, GraphNode SecondNode) {
+        ID = Sequence;
+        LeftNode = FirstNode;
+        RightNode = SecondNode;
+    }
 }
