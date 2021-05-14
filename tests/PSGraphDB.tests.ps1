@@ -23,6 +23,20 @@ Describe "Graph Classes" {
         It "GraphNode should be a type." {
             [GraphNode] | Should Not Be $null
         }
+        It "Should have a working constructor for signature (int Sequence, string[] Types)." {
+            $node = [GraphNode]::new(0,@("Device","Networking"))
+            $node.ID | Should Be 0
+            $node.Lables | Should Be @("Device","Networking")
+        }
+        It "Should have a working constructor for signature (int Sequence, string[] Types, Dictionary<string,string> Data)" {
+            $props = new-object System.Collections.Generic.Dictionary"[String, String]"
+            $props.Add("name","boopsie")
+            $props.Add("color","red")
+            $node = [GraphNode]::new(0,@("Device","Networking"),$props)
+            $node.ID | Should Be 0
+            $node.Lables | Should Be @("Device","Networking")
+            $node.Properties["name"] | Should Be "boopsie"
+        }
     }
     Context "GraphRelation" {
         It "GraphRelation should be a type." {
