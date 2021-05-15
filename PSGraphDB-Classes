@@ -1,22 +1,21 @@
 using System;
 using System.Collections.Generic;
 public class GraphNode {
-    public int ID;
+    public Guid ID;
     public Dictionary<string,string> Properties;
     public string[] Lables;
     public GraphRelation NextRelationship;
-    public GraphNode (int id, string[] lables, Dictionary<string,string> properties) {
-        ID = id;
+    public GraphNode (string[] lables, Dictionary<string,string> properties) {
+        ID = Guid.NewGuid();
         Lables = lables;
         Properties = properties;
     }
-    public GraphNode (int id, string[] lables) {
-        ID = id;
+    public GraphNode (string[] lables) {
+        ID = Guid.NewGuid();
         Lables = lables;
     }
 }
 public class GraphDatabase {
-    public int CurrentID;
     public GraphNode[] NodeTable;
     public GraphRelation[] RelationTable;
 }
@@ -27,7 +26,7 @@ public class GraphDatabase {
 } */
 
 public class GraphRelation {
-    public int ID;
+    public Guid ID;
     public Dictionary<string,string> Properties;
     public GraphNode LeftNode;
     public GraphNode RightNode;
@@ -35,8 +34,8 @@ public class GraphRelation {
     public GraphRelation PreviousRelation;
     public GraphRelation NextRelation;
     public bool FirstInChain;
-    public GraphRelation (int id, GraphNode leftnode, string relationshiptype, GraphNode rightnode) {
-        ID = id;
+    public GraphRelation (GraphNode leftnode, string relationshiptype, GraphNode rightnode) {
+        ID = Guid.NewGuid();
         LeftNode = leftnode;
         RelationshipType = relationshiptype;
         RightNode = rightnode;
