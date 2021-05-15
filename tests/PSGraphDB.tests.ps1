@@ -64,14 +64,11 @@ Describe "Graph Classes" {
         It "GraphDatabase should be a type." {
             [GraphDatabase] | Should Not Be $null
         }
-        $BobProps = New-Object System.Collections.Generic.Dictionary"[String,String]"
-        $BobProps.Add("name","Bob")
-        $BobProps.Add("hobby","trains")
-        $AliceProps = New-Object System.Collections.Generic.Dictionary"[String,String]"
-        $AliceProps.Add("name","Alice")
-        $bob = [GraphNode]::new("Person",$BobProps)
-        $alice = [GraphNode]::new("Person",$AliceProps)
-
+        $bob = [GraphNode]::new("Person")
+        $alice = [GraphNode]::new("Person")
+        $bob.Properties.Add("name","bob")
+        $alice.Properties.Add("name","Alice")
+        $alice.Properties.Add("hobby","trains")
         $database = new-object GraphDatabase
         $database.AddNode($bob)
         $database.AddNode($alice)

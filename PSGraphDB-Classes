@@ -19,8 +19,8 @@ public class GraphNode {
 public class GraphDatabase {
     private List<GraphNode> NodeTable = new List<GraphNode>();
     //private List<GraphRelation> RelationTable;
-    public void AddNode (string[] lables, Dictionary<string,string> properties) {
-        NodeTable.Add(new GraphNode(lables,properties));
+    public void AddNode (GraphNode node) {
+        NodeTable.Add(node);
     }
     public List<GraphNode> V () {
         return NodeTable;
