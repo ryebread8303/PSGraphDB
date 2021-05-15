@@ -28,6 +28,11 @@ Describe "Graph Classes" {
             $node = [GraphNode]::new(@("Device","Networking"))
             $node.Lables | Should Be @("Device","Networking")
         }
+        It "Should be able to add properties after the object is created" {
+            $node = [GraphNode]::new("Device")
+            $node.Properties.Add("name","widget")
+            $node.Properties["name"] | Should Be "widget"
+        }
         It "Should have a working constructor for signature (string[] lables, Dictionary<string,string> properties)" {
             $props = new-object System.Collections.Generic.Dictionary"[String, String]"
             $props.Add("name","boopsie")
@@ -59,6 +64,22 @@ Describe "Graph Classes" {
         It "GraphDatabase should be a type." {
             [GraphDatabase] | Should Not Be $null
         }
+        $BobProps = New-Object System.Collections.Generic.Dictionary"[String,String]"
+        $BobProps.Add("name","Bob")
+        $BobProps.Add("hobby","trains")
+        $AliceProps = New-Object System.Collections.Generic.Dictionary"[String,String]"
+        $AliceProps.Add("name","Alice")
+        $bob = [GraphNode]::new("Person",$BobProps)
+        $alice = [GraphNode]::new("Person",$AliceProps)
+
+        $database = new-object GraphDatabase
+        $database.AddNode($bob)
+        $database.AddNode($alice)
+
+        It "Should return all nodes when starting query." {
+            $database.V().count | Should Be 2
+        }
+
     }
 
 }

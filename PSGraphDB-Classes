@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 public class GraphNode {
     public Guid ID;
-    public Dictionary<string,string> Properties;
+    public Dictionary<string,string> Properties = new Dictionary<string,string>();
     public string[] Lables;
     public GraphRelation NextRelationship;
     public GraphNode (string[] lables, Dictionary<string,string> properties) {
@@ -16,8 +17,18 @@ public class GraphNode {
     }
 }
 public class GraphDatabase {
-    public GraphNode[] NodeTable;
-    public GraphRelation[] RelationTable;
+    private List<GraphNode> NodeTable = new List<GraphNode>();
+    //private List<GraphRelation> RelationTable;
+    public void AddNode (string[] lables, Dictionary<string,string> properties) {
+        NodeTable.Add(new GraphNode(lables,properties));
+    }
+    public List<GraphNode> V () {
+        return NodeTable;
+    }
+/*    public GraphNodeS[] has (GraphNode[] nodes, string key) {
+        return nodes.Where(node => node.Properties.ContainsKey(key));
+    }
+*/
 }
 
 /* public class GraphProperty {
@@ -27,7 +38,7 @@ public class GraphDatabase {
 
 public class GraphRelation {
     public Guid ID;
-    public Dictionary<string,string> Properties;
+    public Dictionary<string,string> Properties = new Dictionary<string,string>();
     public GraphNode LeftNode;
     public GraphNode RightNode;
     public string RelationshipType;
