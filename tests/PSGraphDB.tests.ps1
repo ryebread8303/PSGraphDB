@@ -43,16 +43,17 @@ Describe "Graph Classes" {
         It "GraphRelation should be a type." {
             [GraphRelation] | Should Not Be $null
         }
-        It "Should have a working constructor for signature (int Sequence, GraphNode FirstNode, GraphNode SecondNode)" {
+        It "Should have a working constructor for signature (int Sequence, GraphNode FirstNode, string Type, GraphNode SecondNode)" {
             $BobProps = New-Object System.Collections.Generic.Dictionary"[String,String]"
             $BobProps.Add("name","Bob")
             $AliceProps = New-Object System.Collections.Generic.Dictionary"[String,String]"
             $AliceProps.Add("name","Alice")
             $bob = [GraphNode]::new(0,"Person",$BobProps)
             $alice = [GraphNode]::new(1,"Person",$AliceProps)
-            $relation = [GraphRelation]::new(0,$bob,$alice)
+            $relation = [GraphRelation]::new(0,$bob,"FRIENDS_WITH",$alice)
             $relation.LeftNode.Properties["name"] | Should Be "Bob"
             $relation.RightNode.Properties["name"] | Should Be "Alice"
+            $relation.RelationshipType | Should Be "FRIENDS_WITH"
         }
     }
 

@@ -21,10 +21,10 @@ public class GraphDatabase {
     public GraphRelation[] RelationTable;
 }
 
-public class GraphProperty {
+/* public class GraphProperty {
     public string Key;
     public string Value;
-}
+} */
 
 public class GraphRelation {
     public int ID;
@@ -35,9 +35,10 @@ public class GraphRelation {
     public GraphRelation PreviousRelation;
     public GraphRelation NextRelation;
     public bool FirstInChain;
-    public GraphRelation (int Sequence, GraphNode FirstNode, GraphNode SecondNode) {
+    public GraphRelation (int Sequence, GraphNode FirstNode, string Type, GraphNode SecondNode) {
         ID = Sequence;
         LeftNode = FirstNode;
+        RelationshipType = Type;
         RightNode = SecondNode;
     }
 }
