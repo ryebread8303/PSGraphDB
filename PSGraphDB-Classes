@@ -15,6 +15,9 @@ public class GraphNode {
         ID = Guid.NewGuid();
         Lables = lables;
     }
+    public GraphNode has (string key) {
+        if (this.Properties.ContainsKey(key)){return this;}else{return null;}
+    }
 }
 public class GraphDatabase {
     private List<GraphNode> NodeTable = new List<GraphNode>();
@@ -25,10 +28,11 @@ public class GraphDatabase {
     public List<GraphNode> V () {
         return NodeTable;
     }
-/*    public GraphNodeS[] has (GraphNode[] nodes, string key) {
-        return nodes.Where(node => node.Properties.ContainsKey(key));
-    }
-*/
+    /*public List<GraphNode> has (string key) {
+        var results = NodeTable.Where(node => node.Properties.ContainsKey(key)).ToList();
+        return results;
+    }*/
+
 }
 
 /* public class GraphProperty {

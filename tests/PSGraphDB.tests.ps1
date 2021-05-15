@@ -76,7 +76,9 @@ Describe "Graph Classes" {
         It "Should return all nodes when starting query." {
             $database.V().count | Should Be 2
         }
-
+        It "Should be able to filter nodes that contain a label." {
+            $database.V().has("hobby").Properties["hobby"] | Should Be "trains"
+        }
     }
 
 }
