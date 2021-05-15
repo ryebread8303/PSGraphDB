@@ -5,14 +5,14 @@ public class GraphNode {
     public Dictionary<string,string> Properties;
     public string[] Lables;
     public GraphRelation NextRelationship;
-    public GraphNode (int Sequence, string[] Types, Dictionary<string,string> Data) {
-        ID = Sequence;
-        Lables = Types;
-        Properties = Data;
+    public GraphNode (int id, string[] lables, Dictionary<string,string> properties) {
+        ID = id;
+        Lables = lables;
+        Properties = properties;
     }
-    public GraphNode (int Sequence, string[] Types) {
-        ID = Sequence;
-        Lables = Types;
+    public GraphNode (int id, string[] lables) {
+        ID = id;
+        Lables = lables;
     }
 }
 public class GraphDatabase {
@@ -35,10 +35,10 @@ public class GraphRelation {
     public GraphRelation PreviousRelation;
     public GraphRelation NextRelation;
     public bool FirstInChain;
-    public GraphRelation (int Sequence, GraphNode FirstNode, string Type, GraphNode SecondNode) {
-        ID = Sequence;
-        LeftNode = FirstNode;
-        RelationshipType = Type;
-        RightNode = SecondNode;
+    public GraphRelation (int id, GraphNode leftnode, string relationshiptype, GraphNode rightnode) {
+        ID = id;
+        LeftNode = leftnode;
+        RelationshipType = relationshiptype;
+        RightNode = rightnode;
     }
 }

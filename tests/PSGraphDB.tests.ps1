@@ -24,12 +24,12 @@ Describe "Graph Classes" {
         It "GraphNode should be a type." {
             [GraphNode] | Should Not Be $null
         }
-        It "Should have a working constructor for signature (int Sequence, string[] Types)." {
+        It "Should have a working constructor for signature (int id, string[] lables)." {
             $node = [GraphNode]::new(0,@("Device","Networking"))
             $node.ID | Should Be 0
             $node.Lables | Should Be @("Device","Networking")
         }
-        It "Should have a working constructor for signature (int Sequence, string[] Types, Dictionary<string,string> Data)" {
+        It "Should have a working constructor for signature (int id, string[] lables, Dictionary<string,string> properties)" {
             $props = new-object System.Collections.Generic.Dictionary"[String, String]"
             $props.Add("name","boopsie")
             $props.Add("color","red")
@@ -43,7 +43,7 @@ Describe "Graph Classes" {
         It "GraphRelation should be a type." {
             [GraphRelation] | Should Not Be $null
         }
-        It "Should have a working constructor for signature (int Sequence, GraphNode FirstNode, string Type, GraphNode SecondNode)" {
+        It "Should have a working constructor for signature (int id, GraphNode leftnode, string relationshiptype, GraphNode rightnode)" {
             $BobProps = New-Object System.Collections.Generic.Dictionary"[String,String]"
             $BobProps.Add("name","Bob")
             $AliceProps = New-Object System.Collections.Generic.Dictionary"[String,String]"
