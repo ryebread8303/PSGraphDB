@@ -41,6 +41,20 @@ Describe "Graph Classes" {
             $node.Lables | Should Be @("Device","Networking")
             $node.Properties["name"] | Should Be "boopsie"
         }
+        It "Should be able to check whether the Node contains a specified property." {
+            $node = [GraphNode]::new(@("Device"))
+            $node.properties.add("name","gateway")
+            $node.properties.add("model","routetron 1000")
+            $node.has("model") | Should Be $true
+            $node.has("initiative") | Should Be $null
+        }
+        It "Should be able to check whether the Node contains any of a number of specified properties." {
+            $node = [GraphNode]::new(@("Device"))
+            $node.properties.add("name","gateway")
+            $node.properties.add("model","routetron 1000")
+            $node.has(("model","initiative")) | Should Be $true
+            $node.has(("willingness","initiative")) | Should Be $null
+        }
     }
     Context "GraphRelation" {
         It "GraphRelation should be a type." {

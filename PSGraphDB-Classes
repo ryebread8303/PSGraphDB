@@ -15,8 +15,12 @@ public class GraphNode {
         ID = Guid.NewGuid();
         Lables = lables;
     }
-    public GraphNode has (string key) {
-        if (this.Properties.ContainsKey(key)){return this;}else{return null;}
+    public GraphNode has (string[] keys) {
+        foreach (string key in keys)
+        {
+            if (this.Properties.ContainsKey(keys[0])){return this;}
+        }
+        return null;
     }
 }
 public class GraphDatabase {
