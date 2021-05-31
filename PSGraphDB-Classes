@@ -32,11 +32,6 @@ public class GraphDatabase {
     public List<GraphNode> V () {
         return NodeTable;
     }
-    /*public List<GraphNode> has (string key) {
-        var results = NodeTable.Where(node => node.Properties.ContainsKey(key)).ToList();
-        return results;
-    }*/
-
 }
 
 /* public class GraphProperty {
